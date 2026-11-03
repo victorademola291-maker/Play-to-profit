@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>P2P Welcome</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+body{margin:0;background:#000;overflow:hidden;}
+@keyframes spinBG{to{transform:rotate(360deg);}}
+#swirl{position:absolute;inset:0;width:100%;height:100%;}
+</style>
+</head>
+<body>
+<div style="position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+  <canvas id="swirl"></canvas>
+  <div style="position:absolute;inset:0;background:conic-gradient(from 0deg,#FFD700,#FF0080,#7F00FF,#00FFFF,#FFD700);opacity:0.6;animation:spinBG 3s linear infinite;"></div>
+  
+  <div style="position:relative;z-index:5;text-align:center;display:flex;flex-direction:column;align-items:center;">
+    <!-- YOUR LOGO -->
+   <img src="image.png" style="width:350px;height:350px;object-fit:cover;border-radius:28px;border:4px solid #FFD700;box-shadow:0 0 35px #FFD700;margin-bottom:30px;">
+    
+    <h1 style="font-family:Orbitron,sans-serif;font-size:70px;margin:0;color:#fff;text-shadow:0 0 20px #FFD700;line-height:1.1;">WELCOME TO<br>P2P</h1>
+    <p style="font-family:Orbitron,sans-serif;letter-spacing:0.3em;font-size:30px;color:#FFD700;margin-top:10px;">WHERE VISION MEETS VICTORY</p>
+    
+    <a href="page1.html" style="margin-top:30px;padding:30px 70px;background:#FFD700;color:#000;text-decoration:none;font-weight:900;font-size:15px;border-radius:10px;box-shadow:0 0 20px #FFD700;display:inline-block;">▶ ENTER WORLD</a>
+    
+    <a href="page1.html" style="margin-top:15px;color:#ccc;font-size:12px;text-decoration:none;letter-spacing:1px;">SKIP >></a>
+  </div>
+</div>
+
+<script>
+const c=document.getElementById('swirl');const x=c.getContext('2d');
+function r(){c.width=innerWidth;c.height=innerHeight;}r();addEventListener('resize',r);
+let t=0;(function d(){t+=0.02;let w=c.width,h=c.height;let g=x.createRadialGradient(w/2,h/2,0,w/2,h/2,Math.max(w,h));g.addColorStop(0,'hsl('+((t*40)%360)+',100%,70%)');g.addColorStop(1,'hsl('+((t*40+180)%360)+',100%,50%)');x.fillStyle=g;x.fillRect(0,0,w,h);requestAnimationFrame(d);})();
+setTimeout(()=>{try{let m=new SpeechSynthesisUtterance("Welcome to P2P, Where Vision Meets Victory");m.rate=0.85;speechSynthesis.speak(m);}catch(e){}},1200);
+</script>
+</body>
+</html>
