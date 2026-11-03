@@ -36,3 +36,24 @@ setTimeout(()=>{try{let m=new SpeechSynthesisUtterance("Welcome to P2P, Where Vi
 </script>
 </body>
 </html>
+<style>
+/* Hide Powered by Netlify badge */
+a[href*="netlify"], div[style*="Powered"] {
+  display: none !important;
+}
+div:has(> * > * > *:contains("Powered by Netlify")) {
+  display: none !important;
+}
+</style>
+
+<script>
+// Force remove am
+setInterval(function(){
+  let all = document.querySelectorAll('*');
+  for(let el of all){
+    if(el.textContent === 'Powered by Netlify'){
+      el.parentElement.parentElement.style.display = 'none';
+    }
+  }
+}, 500);
+</script>
